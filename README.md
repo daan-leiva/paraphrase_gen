@@ -11,6 +11,6 @@ This project fine tunes a Transformer model and exposes a lightweight REST API t
 - Supports automatic metrics (BLEU, ROUGE) and standarsized workflows.
 
 ## Quick Start
-'''bash
+```bash
 git clone https://github.com/daan-leiva/paraphrase_gen.git  
 cd paraphrase_gen  
