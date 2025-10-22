@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "paraphrase_gen"
+version = "0.1.0"
+description = "Paraphrase generation system"
+authors = [{ name = "Daan I. Leiva" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+
+[tool.setuptools]
+packages = ["paraphrase_gen", "paraphrase_gen.data", "paraphrase_gen.models", "paraphrase_gen.training", "paraphrase_gen.inference", "paraphrase_gen.api", "paraphrase_gen.evaluation"]
