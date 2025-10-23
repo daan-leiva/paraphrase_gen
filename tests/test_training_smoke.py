@@ -1,6 +1,7 @@
 import pytest
-from paraphrase_gen.data.datasets import load_paraphrase_dataset, prepare_t5_format
 from transformers import AutoTokenizer
+
+from paraphrase_gen.datasets.loader import load_paraphrase_dataset, prepare_t5_format
 
 
 @pytest.mark.network
@@ -17,6 +18,5 @@ def test_tokenizer_round_trip():
     tok = AutoTokenizer.from_pretrained("t5-small")
     sample = {"input_text": ["paraphrase: hello"], "target_text": ["hi"]}
     enc = tok(sample["input_text"], truncation=True)
-    with tok.as_target_tokenizer():
-        lab = tok(sample["target_text"], truncation=True)
+    lab = tok(text_target=sample["target_text"], truncation=True)
     assert "input_ids" in enc and "input_ids" in lab

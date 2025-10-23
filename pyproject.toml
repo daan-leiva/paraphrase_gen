@@ -12,7 +12,9 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
 
+[tool.setuptools]
+package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["paraphrase_gen*"]
