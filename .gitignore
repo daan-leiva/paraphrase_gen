@@ -54,7 +54,6 @@ runs/
 artifacts/
 checkpoints/
 data/
-datasets/
 
 # Model files
 *.pt

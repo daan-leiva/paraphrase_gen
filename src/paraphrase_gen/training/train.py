@@ -7,7 +7,7 @@ from transformers import (
     Seq2SeqTrainingArguments,
 )
 
-from paraphrase_gen.data.datasets import load_paraphrase_dataset, prepare_t5_format
+from paraphrase_gen.datasets.loader import load_paraphrase_dataset, prepare_t5_format
 from paraphrase_gen.models.modeling import load_model_and_tokenizer
 from paraphrase_gen.training.metrics import compute_metrics
 
