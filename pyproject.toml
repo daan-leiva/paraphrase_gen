@@ -13,5 +13,6 @@ requires-python = ">=3.10"
 dependencies = []
 
 
-[tool.setuptools]
-packages = ["paraphrase_gen", "paraphrase_gen.data", "paraphrase_gen.models", "paraphrase_gen.training", "paraphrase_gen.inference", "paraphrase_gen.api", "paraphrase_gen.evaluation"]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["paraphrase_gen*"]
