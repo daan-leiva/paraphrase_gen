@@ -1,0 +1,83 @@
+# OS and editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.code-workspace
+
+# Python and build
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+.python-version
+
+# Virtual environments and env files
+.venv/
+venv/
+.env
+.env.local
+.env.*.local
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Logs and temp files
+logs/
+*.log
+*.out
+*.err
+tmp/
+temp/
+*.tmp
+*~
+
+# Test, coverage, and caches
+.coverage
+coverage.xml
+htmlcov/
+.pytest_cache/
+.cache/
+.mypy_cache/
+.ruff_cache/
+.pyright/
+.dmypy.json
+.pyre/
+
+# Project data and artifacts
+runs/
+artifacts/*
+!artifacts/*.png
+!artifacts/*.jpg
+!artifacts/*.svg
+checkpoints/
+data/
+
+# Model files
+*.pt
+*.bin
+*.ckpt
+*.onnx
+*.safetensors
+
+# Hugging Face caches and config in repo scope
+.huggingface/
+.cache/huggingface/
+huggingface/
+hf_cache/
+
+# Docker related
+*.pid
+docker-volume/
+docker-data/
+
+# MLflow default local store if used later
+mlruns/
+
+# Optional tool configs generated locally
+.envrc
