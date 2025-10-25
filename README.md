@@ -96,3 +96,12 @@ You can adjust a few decoding settings to trade off variety vs. precision:
 - **max_new_tokens / min_new_tokens**: control length of the paraphrase.
 - **no_repeat_ngram_size** (0–5): prevents short phrase repeats (3 is a solid default).
 - **repetition_penalty** (1.0–1.2): penalty for repeated tokens.
+
+## Hugging Face Models
+
+All paraphrase models trained for this project are also available on the Hugging Face Hub:
+
+- [Paraphrase T5-Small MIX](https://huggingface.co/daanleiva/paraphrase-t5-small-mix)
+- [Paraphrase T5-Small QQP](https://huggingface.co/daanleiva/paraphrase-t5-small-qqp)
+- [Paraphrase T5-Small MRPC](https://huggingface.co/daanleiva/paraphrase-t5-small-mrpc)
+- [Paraphrase T5-Small PAWS](https://huggingface.co/daanleiva/paraphrase-t5-small-paws)
