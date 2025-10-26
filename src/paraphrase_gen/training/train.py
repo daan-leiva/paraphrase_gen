@@ -1,4 +1,5 @@
 import argparse
+from datetime import datetime
 from pathlib import Path
 
 import numpy as np
@@ -71,7 +72,7 @@ def main():
     parser.add_argument("--model_name", default="t5-small")
     parser.add_argument("--dataset_name", default="glue")
     parser.add_argument("--dataset_config", default="qqp")
-    parser.add_argument("--output_dir", default="runs/t5_small_qqp")
+    parser.add_argument("--output_dir", default=None)
     parser.add_argument("--max_length", type=int, default=128)
     parser.add_argument("--batch_size", type=int, default=16)
     parser.add_argument("--epochs", type=int, default=3)
@@ -105,6 +106,11 @@ def main():
     parser.add_argument("--val_take", type=int, default=6_000)
 
     args = parser.parse_args()
+
+    # fix default path
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    default_output = Path("runs") / f"t5_small_{args.dataset_config}_{timestamp}"
+    output_dir = args.output_dir or default_output
 
     if args.mix_default:
         ds_proc = build_paraphrase_mixture(
@@ -172,7 +178,7 @@ def main():
             }
         )
 
-    spot_path = Path(args.output_dir) / "spotcheck.txt"
+    spot_path = Path(output_dir) / "spotcheck.txt"
     spot_cb = SpotCheckCallback(
         tokenizer=tokenizer,
         text=args.spot_text,
@@ -181,7 +187,7 @@ def main():
     )
 
     train_args = Seq2SeqTrainingArguments(
-        output_dir=args.output_dir,
+        output_dir=output_dir,
         per_device_train_batch_size=args.batch_size,
         per_device_eval_batch_size=args.batch_size,
         learning_rate=args.lr,
@@ -267,12 +273,12 @@ def main():
     resume_flag = False
     if args.resume:
         # resume if there is any checkpoint under output_dir
-        ckpts = [p for p in Path(args.output_dir).glob("checkpoint-*")]
+        ckpts = [p for p in Path(output_dir).glob("checkpoint-*")]
         resume_flag = len(ckpts) > 0
 
     trainer.train(resume_from_checkpoint=resume_flag)
-    trainer.save_model(args.output_dir)
-    tokenizer.save_pretrained(args.output_dir)
+    trainer.save_model(output_dir)
+    tokenizer.save_pretrained(output_dir)
 
 
 if __name__ == "__main__":
