@@ -9,7 +9,7 @@ rouge = evaluate.load("rouge")
 def compute_metrics(eval_preds):
     preds, refs = eval_preds
     preds = [p.strip() for p in preds]
-    refs = [[r.strip()] for r in refs]
+    refs = [r.strip() for r in refs]
     b = bleu.compute(
         predictions=preds,  # list[str]
         references=[[r] for r in refs],  # list[list[str]]
